@@ -16,6 +16,9 @@ venv/
 backups/
 
 # Doublons : la source unique des livrables est livrables/
+# Documents retirés du dépôt public, conservés en local
+/livrables/Note_de_synthese_MCP_TI.pdf
+/livrables/Conducteur_soutenance_MCP_TI.pdf
 /Rapport_MCP_Threat_Intelligence_TEK-UP.docx
 /Rapport_MCP_Threat_Intelligence_TEK-UP.pdf
 /docs/rapport/*.docx

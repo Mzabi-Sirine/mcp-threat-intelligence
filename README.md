@@ -135,7 +135,7 @@ data/              jeu synthétique (bulletins, indicateurs, actifs, base)
 preuves/           captures d'écran et campagnes filmées
 figures/           schémas du rapport
 docs/              sources de génération du rapport, du deck et des fiches
-livrables/         rapport, deck, note de synthèse et conducteur (PDF)
+livrables/         rapport et deck (PDF)
 ```
 
 ## Livrables
@@ -145,8 +145,6 @@ livrables/         rapport, deck, note de synthèse et conducteur (PDF)
 | Rapport final (35 pages) | [`livrables/Rapport_MCP_Threat_Intelligence_TEK-UP.pdf`](livrables/Rapport_MCP_Threat_Intelligence_TEK-UP.pdf) |
 | Deck de soutenance (16 diapos) | [`livrables/Deck_Soutenance_MCP_TI.pdf`](livrables/Deck_Soutenance_MCP_TI.pdf) |
 | Deck avec notes orales imprimables | [`docs/deck/Deck_Soutenance_MCP_TI_notes.pdf`](docs/deck/Deck_Soutenance_MCP_TI_notes.pdf) |
-| Note de synthèse (4 pages) | [`livrables/Note_de_synthese_MCP_TI.pdf`](livrables/Note_de_synthese_MCP_TI.pdf) |
-| Conducteur de soutenance | [`livrables/Conducteur_soutenance_MCP_TI.pdf`](livrables/Conducteur_soutenance_MCP_TI.pdf) |
 | Campagne de tests filmée (34 s) | [`preuves/video/Demo_Tests_MCP_TI.mp4`](preuves/video/Demo_Tests_MCP_TI.mp4) |
 | Démonstration filmée (1 min 55) | [`preuves/video/Demo_MCP_Threat_Intelligence_voix.mp4`](preuves/video/Demo_MCP_Threat_Intelligence_voix.mp4) |
 
