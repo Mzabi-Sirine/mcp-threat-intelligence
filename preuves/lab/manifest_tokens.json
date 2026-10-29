@@ -1,0 +1,68 @@
+{
+  "analyst": {
+    "sub": "agent-soc-01",
+    "clearance": 2,
+    "purpose": "triage",
+    "jti": "c203151296a0a229e7c31a7d"
+  },
+  "crypto": {
+    "sub": "agent-crypto-02",
+    "clearance": 3,
+    "purpose": "investigation",
+    "jti": "13c8ff12682e96e50893ed0c"
+  },
+  "low": {
+    "sub": "agent-stage-03",
+    "clearance": 1,
+    "purpose": "reporting",
+    "jti": "1cf4bb885679c5d295e876de"
+  },
+  "wrong_comp": {
+    "sub": "agent-attrib-04",
+    "clearance": 3,
+    "purpose": "investigation",
+    "jti": "e48ac58481b55fe19069e527"
+  },
+  "noncompliant": {
+    "sub": "agent-byod-05",
+    "clearance": 3,
+    "purpose": "triage",
+    "jti": "a39ffdf974506d15a6844638"
+  },
+  "expired": {
+    "sub": "agent-old-06",
+    "clearance": 3,
+    "purpose": "triage",
+    "jti": "bd8bfa7829ef15fa86c9424a"
+  },
+  "revoked": {
+    "sub": "agent-revoke-07",
+    "clearance": 2,
+    "purpose": "triage",
+    "jti": "df93f677717ccc3eec26830e"
+  },
+  "rate": {
+    "sub": "agent-load-08",
+    "clearance": 2,
+    "purpose": "triage",
+    "jti": "324e0b07d2d4357a2ba8efa6"
+  },
+  "auditor": {
+    "sub": "agent-audit-09",
+    "clearance": 2,
+    "purpose": "audit",
+    "jti": "cee6cb4e680f211734e8521a"
+  },
+  "restart_probe": {
+    "sub": "agent-restart-10",
+    "clearance": 2,
+    "purpose": "triage",
+    "jti": "69ecd07b225548db2cca3968"
+  },
+  "tampered": {
+    "sub": "jeton-altéré",
+    "clearance": null,
+    "purpose": null,
+    "jti": "inconnu"
+  }
+}

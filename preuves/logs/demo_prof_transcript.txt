@@ -1,0 +1,97 @@
+$ python3 scripts/demo_defense.py --present
+Laboratoire de démonstration : /root/tekup-mcp-ti/preuves/demo_prof
+Date : 2026-10-29T12:14:23.827Z
+
+
+==============================================================================
+S1 · Découverte du serveur
+==============================================================================
+Le serveur démarre en local et expose six outils en lecture seule : protocole, version et volume visible.
+S1 — DÉCOUVERTE DU SERVEUR
+> initialize  (client tekup-lab-client)
+  protocole=2025-06-18  serveur=v1.0.0  outils=6  lecture_seule=True
+  • ti_search          lecture seule
+  • ti_get_advisory    lecture seule
+  • ti_enrich_ioc      lecture seule
+  • ti_correlate       lecture seule
+  • ti_score_asset     lecture seule
+  • ti_health          lecture seule
+> tools/call ti_health
+  service=TEK-UP Threat Intelligence MCP  version=1.0.0
+  bulletins visibles=9  indicateurs visibles=26
+  durcissement : jetons signés, ABAC, assainissement, injection neutralisée, journal chaîné, réseau sortant interdit
+
+
+==============================================================================
+S2 · Fuite bloquée par l'habilitation
+==============================================================================
+Une analyste Confidentiel demande un bulletin Secret : refus, canari absent, décision journalisée.
+S2 — FUITE TENTÉE PAR UN JETON CONFIDENTIEL
+> ti_get_advisory('ADV-2026-004')   [agent-soc-01, Confidentiel, CTI+INC]
+  isError=True  code=RESSOURCE_INDISPONIBLE
+  message=« La demande ne peut pas être satisfaite avec les droits présentés. »
+  canari dans la réponse : False
+  journal : decision=deny  reason=HABILITATION_INSUFFISANTE  classification=None  clearance=2
+
+
+==============================================================================
+S3 · Cloisonnement besoin d'en connaître
+==============================================================================
+Un agent Secret sans le compartiment CRYPTO demande le même bulletin : refus par besoin d'en connaître.
+S3 — JETON SECRET MAIS HORS COMPARTIMENT
+> ti_get_advisory('ADV-2026-004')   [agent-attrib-04, Secret, CTI seul]
+  isError=True  code=RESSOURCE_INDISPONIBLE
+  canari dans la réponse : False
+  journal : reason=BESOIN_CONNAITRE_NON_SATISFAIT  (cloisonnement CRYPTO)
+
+
+==============================================================================
+S4 · Accès autorisé, contrôle positif
+==============================================================================
+Un agent Secret + CRYPTO accède au bulletin : le canari apparaît, preuve du contrôle positif.
+S4 — ACCÈS AUTORISÉ (SECRET + CRYPTO)
+> ti_get_advisory('ADV-2026-004')   [agent-crypto-02, Secret, CTI+CRYPTO+ATTRIB]
+  isError=False  classification=Secret  tlp=TLP:RED
+  canari de contrôle présent : True   (CANARY-TEKUP-…-2026)
+  journal : decision=allow  reason=OK
+
+
+==============================================================================
+S5 · Injection neutralisée
+==============================================================================
+Un bulletin partenaire contient une instruction hostile : elle est signalée, neutralisée et journalisée.
+S5 — INJECTION D'INSTRUCTIONS DANS UN FLUX PARTENAIRE
+> ti_get_advisory('ADV-2026-012')   [contenu hostile importé]
+  isError=False  code=None
+  fanions=appel_outil, balise_active, exfiltration, ignorer_instructions
+  instruction brute livrée : False
+  marqueur de neutralisation : True
+  journal : injection_flags=['appel_outil', 'balise_active', 'exfiltration', 'ignorer_instructions']
+
+
+==============================================================================
+S6 · Journal d'audit chaîné
+==============================================================================
+Je vérifie le journal valide, puis une copie falsifiée : la rupture est localisée à la séquence près.
+S6 — VÉRIFICATION DE LA CHAÎNE D'AUDIT
+$ python3 src/ti_cli.py verify-audit --path preuves/demo_prof/audit.jsonl
+  {"ok": true, "entries": 5, "broken_at": null, "reason": ""}
+  seq=3   tool_call    BESOIN_CONNAITRE_NON_SATISFAIT hash=90c2464149baecdf5902f08b…
+  seq=4   tool_call    OK                         hash=d99e3b49be3db751805f55cf…
+  seq=5   tool_call    OK                         hash=cdcc78e66098a578667f8605…
+$ python3 src/ti_cli.py verify-audit --path preuves/demo_prof/audit_falsifie.jsonl
+  {"ok": false, "entries": 3, "broken_at": 3, "reason": "empreinte invalide"}
+
+
+==============================================================================
+S7 · Avant / après sur les mêmes bulletins
+==============================================================================
+Même bulletin, deux serveurs : la maquette fuit, le serveur durci masque, refuse et journalise.
+S7 — AVANT / APRÈS SUR LES MÊMES BULLETINS
+  maquette sans contrôle (ADV-2026-004 Secret) : canari présent=True
+  serveur durci, jeton Confidentiel : canari présent=False
+  maquette sans contrôle (ADV-2026-003) : source claire=True
+  serveur durci, jeton Confidentiel : source présente=False  champs masqués=['source_identity']
+  serveur durci, jeton Secret+CRYPTO : canari présent=True (contrôle positif)
+
+FIN DE LA DÉMONSTRATION
