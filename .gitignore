@@ -27,8 +27,20 @@ backups/
 /docs/deck/Conducteur_soutenance_MCP_TI.docx
 /docs/deck/Conducteur_soutenance_MCP_TI.pdf
 
-# Aperçus de pages du rapport
+# Aperçus de pages et documents de travail
 /preuves/rapport_apercu/
+/docs/deck/apercu/
+/docs/deck/apercu_guide/
+/docs/note_synthese/apercu/
+*.docx
+*.pptx
+
+# Journaux bruts et laboratoires d'exécution
+/preuves/logs/
+/preuves/lab/
+/preuves/demo/
+/preuves/demo_prof/
+/preuves/video/architecture/
 
 # Système
 .DS_Store

@@ -1,7 +1,0 @@
-Itération 1 — échec réel observé le 2026-10-27 vers 14:08 (heure locale du conteneur)
-Scénario : recherche autorisée, puis lecture du bulletin ADV-2026-003.
-Symptôme : le serveur s'arrête sur la deuxième écriture du journal.
-Trace : audit.py, _last(), AttributeError: 'str' object has no attribute 'decode'
-Cause : fichier d'audit ouvert en mode texte, puis décodage UTF-8 explicite.
-Correction : supprimer le décodage, lire directement la chaîne texte ; relancer le scénario complet.
-Statut : corrigé et rejoué (voir tests finaux). L'échec reste consigné, il n'est pas masqué.

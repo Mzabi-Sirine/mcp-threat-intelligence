@@ -68,18 +68,27 @@ vérifiable. Les données sont **100 % synthétiques** : 12 bulletins, 30 indica
 
 ## Résultats mesurés
 
-| Mesure | Valeur | Preuve |
-| --- | --- | --- |
-| Scénarios nominaux et durcissement | 15 / 15 | [`tests_latest.json`](preuves/logs/tests_latest.json) |
-| Scénarios d'abus | 16 / 16 détectés | idem |
-| Chaîne d'audit | 116 entrées, 115 liens valides | idem |
-| Latence (60 appels, ext4) | p50 5,57 ms · p95 6,48 ms | idem |
-| Poste Windows/WSL (DrvFs) | p95 45,95 ms | [`preuves/logs/`](preuves/logs/) |
-| Injection d'instructions | 3 / 3 neutralisées, 0 faux positif sur 11 bulletins bénins | idem |
-| Révocation | jeton refusé à la requête suivante | idem |
+| Mesure | Valeur |
+| --- | --- |
+| Scénarios nominaux et durcissement | 15 / 15 |
+| Scénarios d'abus | 16 / 16 détectés |
+| Chaîne d'audit | 116 entrées, 115 liens valides |
+| Latence (60 appels, ext4) | p50 5,57 ms · p95 6,48 ms |
+| Poste Windows/WSL (DrvFs) | p95 45,95 ms |
+| Injection d'instructions | 3 / 3 neutralisées, 0 faux positif sur 11 bulletins bénins |
+| Révocation | jeton refusé à la requête suivante |
 
-Chaque campagne écrit un journal horodaté et met à jour `tests_latest.json` ; aucune exécution
-n'écrase la précédente.
+Chaque campagne écrit un journal horodaté, archivé avec les autres preuves d'exécution.
+
+## Captures d'écran
+
+| Fuites bloquées | Audit falsifié |
+| --- | --- |
+| ![Fuites bloquées](preuves/captures_ecran/03_fuites_bloquees.png) | ![Audit falsifié](preuves/captures_ecran/05_audit_falsification.png) |
+| **Accès et injection** | **Moindre privilège** |
+| ![Accès et injection](preuves/captures_ecran/04_acces_et_injection.png) | ![Moindre privilège](preuves/captures_ecran/07_moindre_privilege.png) |
+
+Les sept captures réelles sont dans [`preuves/captures_ecran/`](preuves/captures_ecran/).
 
 ## Démarrage rapide
 
@@ -123,10 +132,10 @@ tests/             31 scénarios + régression UTF-8
 scripts/           démonstration, captures, génération des figures
 demo/              lanceurs de soutenance
 data/              jeu synthétique (bulletins, indicateurs, actifs, base)
-preuves/           journaux JSON, chaîne d'audit, captures, vidéos
+preuves/           captures d'écran et campagnes filmées
 figures/           schémas du rapport
 docs/              sources de génération du rapport, du deck et des fiches
-livrables/         rapport 35 pages, deck 16 diapos, note de synthèse, conducteur
+livrables/         rapport, deck, note de synthèse et conducteur (PDF)
 ```
 
 ## Livrables

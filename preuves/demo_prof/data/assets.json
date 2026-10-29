@@ -1,8 +1,0 @@
-[
-  {"id":"AST-01","name":"Passerelle VPN","criticality":5,"exposure":4,"classification":2,"compartments":["CTI"],"products":["vpn-pare-feu"],"owner":"DSI Réseau"},
-  {"id":"AST-02","name":"Poste d'administration DSI","criticality":3,"exposure":3,"classification":1,"compartments":[],"products":["poste-dsi"],"owner":"DSI Support"},
-  {"id":"AST-03","name":"Portail étudiant","criticality":4,"exposure":5,"classification":2,"compartments":["CTI"],"products":["portail-etudiant"],"owner":"Direction des études"},
-  {"id":"AST-04","name":"Serveur de sauvegarde","criticality":5,"exposure":2,"classification":2,"compartments":["CTI"],"products":["sauvegarde"],"owner":"DSI Infrastructure"},
-  {"id":"AST-05","name":"Poste de développement","criticality":2,"exposure":4,"classification":0,"compartments":[],"products":["poste-etudiant"],"owner":"Pôle projets"},
-  {"id":"AST-06","name":"Autorité de certification interne","criticality":4,"exposure":2,"classification":3,"compartments":["CRYPTO"],"products":["pki-interne"],"owner":"Cellule CRYPTO"}
-]
