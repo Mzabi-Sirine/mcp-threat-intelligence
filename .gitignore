@@ -1,0 +1,35 @@
+# Secrets et jetons — jamais publiés
+data/keys/
+preuves/tokens/
+*.key
+*.tok
+*.pem
+*.env
+
+# Caches d'exécution
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Sauvegardes locales de travail
+backups/
+
+# Doublons : la source unique des livrables est livrables/
+/Rapport_MCP_Threat_Intelligence_TEK-UP.docx
+/Rapport_MCP_Threat_Intelligence_TEK-UP.pdf
+/docs/rapport/*.docx
+/docs/rapport/*.pdf
+/docs/note_synthese/*.docx
+/docs/note_synthese/*.pdf
+/docs/deck/Deck_Soutenance_MCP_TI.pdf
+/docs/deck/Deck_Soutenance_MCP_TI.pptx
+/docs/deck/Conducteur_soutenance_MCP_TI.docx
+/docs/deck/Conducteur_soutenance_MCP_TI.pdf
+
+# Aperçus de pages du rapport
+/preuves/rapport_apercu/
+
+# Système
+.DS_Store
+Thumbs.db
